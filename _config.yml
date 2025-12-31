@@ -1,0 +1,70 @@
+# Site settings
+title: "Databricks Solution Architect Handbook"
+description: "A comprehensive guide to becoming a successful Databricks Solution Architect, covering technical expertise, business acumen, and community engagement"
+url: "https://moshesham.github.io"
+baseurl: "/Databricks-Sloution-Architect-Handbook"
+repository: moshesham/Databricks-Sloution-Architect-Handbook
+github_username: moshesham
+
+# Author information
+author: "Databricks SA Handbook Community"
+
+# Analytics (set to your GA4 measurement ID if desired)
+google_analytics: ""
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_id_prefix: "id-"
+  syntax_highlighter: rouge
+  table_align_class: true
+
+highlighter: rouge
+
+permalink: /:categories/:title/
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Include files
+include:
+  - _pages
+  - _layouts
+  - _includes
+  - assets
+
+# Exclude files
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - .bundle/
+  - .sass-cache/
+  - .jekyll-cache/
+  - node_modules/
+  - .git
+  - .github
+  - "*.pyc"
+  - "__pycache__/"
+
+# Custom variables
+github_url: "https://github.com/moshesham/Databricks-Sloution-Architect-Handbook"
+issues_url: "https://github.com/moshesham/Databricks-Sloution-Architect-Handbook/issues"
+
+# SEO and social
+social:
+  name: "Databricks Solution Architect Handbook"
+  links:
+    - https://github.com/moshesham/Databricks-Sloution-Architect-Handbook
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
