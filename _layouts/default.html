@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% seo %}
+    <meta name="keywords" content="Databricks, Solution Architect, Lakehouse, Apache Spark, Delta Lake, MLflow, AWS, Azure, GCP">
+    <meta name="author" content="Databricks SA Handbook Community">
+
+    <!-- Font Preconnects -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- MathJax -->
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- RSS Feed -->
+    {% feed_meta %}
+</head>
+<body>
+    <div class="page-wrapper">
+        <!-- Skip to main content link -->
+        <a href="#main-content" class="skip-link">Skip to main content</a>
+        
+        <!-- Header -->
+        <header class="site-header">
+            <nav class="main-nav">
+                <div class="nav-brand">
+                    <a href="{{ '/' | relative_url }}">
+                        <i class="fas fa-database"></i>
+                        <span>{{ site.title | default: "Databricks SA Handbook" }}</span>
+                    </a>
+                </div>
+                <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a></li>
+                    <li><a href="{{ '/Introduction/' | relative_url }}" {% if page.url contains 'Introduction' %}class="active"{% endif %}>Introduction</a></li>
+                    <li><a href="{{ '/Foundational-Databricks-Data-Landscape/' | relative_url }}" {% if page.url contains 'Foundational' %}class="active"{% endif %}>Foundation</a></li>
+                    <li><a href="{{ '/Skillset-Overview/' | relative_url }}" {% if page.url contains 'Skillset' %}class="active"{% endif %}>Skills</a></li>
+                    <li><a href="{{ '/Databricks-Community/' | relative_url }}" {% if page.url contains 'Community' %}class="active"{% endif %}>Community</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <a href="{{ site.github_url }}" class="btn btn-secondary" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content" id="main-content">
+            <article class="content">
+                {{ content }}
+            </article>
+        </main>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="{{ '/Introduction/' | relative_url }}">Introduction</a></li>
+                        <li><a href="{{ '/Foundational-Databricks-Data-Landscape/' | relative_url }}">Foundation</a></li>
+                        <li><a href="{{ '/Skillset-Overview/' | relative_url }}">Technical Skills</a></li>
+                        <li><a href="{{ '/Databricks-Community/' | relative_url }}">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Topics</h4>
+                    <ul>
+                        <li><a href="{{ '/Foundational-Databricks-Data-Landscape/' | relative_url }}">Lakehouse Architecture</a></li>
+                        <li><a href="{{ '/Skillset-Overview/' | relative_url }}">Apache Spark</a></li>
+                        <li><a href="{{ '/Technical-Skill-DeepDive/PySpark-Kickstarter/' | relative_url }}">PySpark Tutorial</a></li>
+                        <li><a href="{{ '/Databricks-Community/' | relative_url }}">Certifications</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="{{ site.github_url }}" target="_blank">GitHub Repository</a></li>
+                        <li><a href="{{ site.issues_url }}" target="_blank">Report Issues</a></li>
+                        <li><a href="{{ site.github_url }}/pulls" target="_blank">Contribute</a></li>
+                        <li><a href="{{ '/CODE_OF_CONDUCT/' | relative_url }}">Code of Conduct</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. Built with ❤️ for aspiring Databricks Solution Architects.</p>
+                <p>Licensed under <a href="{{ '/LICENSE/' | relative_url }}">MIT License</a></p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script>
+        // Mobile navigation toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (navToggle && navLinks) {
+                navToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+                    navToggle.setAttribute('aria-expanded', !expanded);
+                });
+            }
+
+            // Theme toggle
+            const themeToggle = document.querySelector('.theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    const currentTheme = document.documentElement.getAttribute('data-theme');
+                    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                    document.documentElement.setAttribute('data-theme', newTheme);
+                    localStorage.setItem('theme', newTheme);
+                    
+                    const icon = themeToggle.querySelector('i');
+                    icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+                });
+
+                // Check for saved theme preference
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme) {
+                    document.documentElement.setAttribute('data-theme', savedTheme);
+                    const icon = themeToggle.querySelector('i');
+                    icon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+                }
+            }
+
+            // Sticky header scroll effect
+            const header = document.querySelector('.site-header');
+            if (header) {
+                window.addEventListener('scroll', function() {
+                    if (window.scrollY > 50) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
